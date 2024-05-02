@@ -1,3 +1,10 @@
 function isEmpty(obj) {
-  // ваш код...
+
+  let propExists = false;
+
+  for (let key in obj) {
+    propExists = true;
+    break;
+  }
+  return !propExists;
 }
