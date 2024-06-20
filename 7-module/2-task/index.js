@@ -32,9 +32,7 @@ export default class Modal {
   }
 
   open() {
-    let conteinerElem = document.querySelector('.container');
-    conteinerElem.append(this.elem);
-    // document.body.append(this.elem);
+    document.body.append(this.elem);
     document.body.classList.add('is-modal-open');
     document.addEventListener('keydown', this.escListener);
   }
@@ -50,19 +48,16 @@ export default class Modal {
     modalBodyElem.append(modalBody);
   }
 
-  close() {
-    let modalElem = document.querySelector('.modal');
-    modalElem.remove();
+  close = () => {
+    this.elem.remove();
     document.body.classList.remove('is-modal-open');
     document.removeEventListener('keydown', this.escListener);
   }
 
-  escListener(event) {
+  escListener = (event) => {
     if (event.code !== 'Escape') return;
 
-    // this.close();
-    let modalElem = document.querySelector('.modal');
-    modalElem.remove();
+    this.elem.remove();
     document.body.classList.remove('is-modal-open');
     document.removeEventListener('keydown', this.escListener);
   }
